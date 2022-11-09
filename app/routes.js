@@ -13,8 +13,8 @@ module.exports = function(app, passport, db) {
       res.render('neighbors.ejs');
   });
 
-  app.get('/moveInDay', function(req, res) {
-    res.render('moveInDay.ejs');
+  app.get('/contact', function(req, res) {
+    res.render('contact.ejs');
 });
 
 
@@ -42,11 +42,11 @@ module.exports = function(app, passport, db) {
 
 // message board routes ===============================================================
 
-    app.post('/messages', (req, res) => {
-      db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
+    app.post('/contact', (req, res) => {
+      db.collection('contactSubmission').save({name: req.body.name, message: req.body.message, email:req.body.email}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
-        res.redirect('/profile')
+        res.redirect('/contacts')
       })
     })
 
