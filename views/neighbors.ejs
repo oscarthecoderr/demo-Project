@@ -4,32 +4,12 @@
     <title>The Block Party</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="neighbors.css">
 </head>
 <body>
   <header>
-    <style>
-      .neighbors{
-        text-align: center;
-        font-size: 4rem;
-        color:white;
-              -webkit-text-stroke-width: 1px;
-              -webkit-text-stroke-color: black;
-      }
-      h4{
-        text-align: center;
-      }
-      .row-1{
-        border: 1px solid red;
-      }
-      body{
-        background-color: #000000;
-        background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
-      }
-
-    </style>
     <h1 class="neighbors">About Your Neighbors</h1>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" 
+    <nav class="navbar navbar-expand-sm" 
     style="display:flex;
     flex-direction: column;
     ">
@@ -67,35 +47,34 @@
   </nav>
         
   </header>
-<section class="container" style="display:flex; flex-direction:row; justify-content:space-around;">
-  <section class="row-1">
-      <h4>Name</h4>
-    <section>
-      <img src="img/menace.png" class="rounded float-left" alt="model">
-    </section>
-      <section>
-        <p>asduhfuigahsiufaweoifoiawe</p>
-      </section>
-        <div>
-          <button>TICKETS</button>
+  <div class="container">
+    <div class="row">
+      <% for(let i = 0 ; i < users.length ; i++){%>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="our-team">
+          <div class="picture">
+            <img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
+          </div>
+          <div class="team-content">
+            <h3 class="name"><%=users[i].local.email%></h3>
+            <h4 class="title"><%=users[i].local.title%></h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <ul class="social">
+            <details>
+              <summary class="button">Upcoming Events</summary>
+                
+              <div>
+                <h2>Welcome to the Block Party!</h2>
+                <p>In order to view <%=users[i].local.email%>'s upcoming events, <a href="/signup">signup</a>, or <a href="/login">login</a>.</p>
+              </div>
+            </details>
+          </ul>
         </div>
-        <div>profile link</div>
-  </section>
-  
-  <section class="row-1">
-    <h4>Name</h4>
-  <section>
-    <img src="img/beOpen.jpg" class="rounded float-left" alt="model">
-  </section>
-    <section>
-      <p>this is bellita</p>
-    </section>
-      <div>
-        <button>TICKETS</button>
       </div>
-      <div>profile link</div>
-  </section>
-</section>
+      <%}%>
+    </div>
+  </div>
 
 
 

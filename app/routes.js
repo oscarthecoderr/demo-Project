@@ -1,17 +1,30 @@
 const { ObjectID } = require("mongodb").ObjectId;
 
-module.exports = function(app, passport, db) {
+module.exports = function(app, passport, db, multer) {
 
 // normal routes ===============================================================
-
-    // show the home page (will also have our login links)
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images/uploads');
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + '.png');
+  },
+  });
+  var upload = multer({ storage: storage });
    
     app.get('/', function(req, res) {
         res.render('home.ejs');
     });
 
     app.get('/neighbors', function(req, res) {
-      res.render('neighbors.ejs');
+      db.collection('users').find().toArray((err,users)=>{
+        if (err) return console.log(err)
+        console.log(users)
+        res.render('neighbors.ejs',{
+          users:users
+        });
+      })
   });
 
   app.get('/contact', function(req, res) {

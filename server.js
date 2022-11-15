@@ -14,7 +14,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
-
+var multer       = require('multer');
 var configDB = require('./config/database.js');
 
 var db 
@@ -23,7 +23,7 @@ var db
 mongoose.connect(configDB.url,(err, client) => {
   if (err) return console.log(err)
   db = client.db
-  require('./app/routes.js')(app, passport, db);
+  require('./app/routes.js')(app, passport, db, multer);
 }); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
