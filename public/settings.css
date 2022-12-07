@@ -1,0 +1,80 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+ }
+div.account-settings .user-profile .user-avatar{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  font-size:50px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  margin:auto;
+  color:black;
+  margin-bottom: 20px;
+}
+
+div.account-settings .user-profile {
+  padding-top: 31px;
+
+}
+
+
+div.account-settings .about{
+  height: 189px;
+}
+
+
+ 
+nav {
+  background-color: #337ab7;
+  color: white;
+  font-family: ubuntu;
+  height: 70px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+ }
+ 
+  nav > div {
+    background: inherit;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    height: inherit;
+    line-height: 70px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 25%;
+   }
+ 
+    nav > div:hover {
+      background-color: #4996d8;
+      border-bottom: 5px solid #337ab7;
+      border-left: 10px solid #337ab7;
+      border-right: 10px solid #337ab7;
+      border-top: 5px solid #337ab7;
+      line-height: 60px;
+      transition: .3s;
+     }
+
+    .container{
+      margin-top: 171px;
+    }
+
+     nav a {
+      color: white;
+      font-weight: 900;
+      font-size: 15px;
+      font-family: monospace;
+     }
+
+     .card-body{
+      padding: 20px;
+     }

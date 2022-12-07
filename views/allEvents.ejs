@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>All Events</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./allEvents.css">
+
+</head>
+<body>
+  <nav>
+    <div><a href="/myEvents">My Events</a></div>
+    <div><a href="allEvents">All Events</a></div>
+    <div><a href="/settings">Account Settings</a></div>
+    <div><a href="/">Logout</a></div>
+  </nav>
+<!-- partial:index.partial.html -->
+<div class="page-event">
+  <div class="cover">
+    <div class="heading">events</div>
+  </div>
+  <div class="container">
+    <div class="upcoming-sec">
+      <div class="heading">Upcoming Events</div>
+    </div>
+    <div class="upcoming-event-list">
+      <% for(let i = 0; i < events.length; i ++){%>
+  
+      <div class="event-block">
+        <div class="row">
+          <div class="col-lg-2 sec-1">
+            <table>
+              <tr>
+                <td>
+                  <div class="month"><%= events[i].month%></div>
+                  <div class="month-date-devider"></div>
+                  <div class="date"><%= events[i].date.split("-")[2]%></div>
+                </td>
+                
+                <td class="title"><%= events[i].title%></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-lg-5 sec-2">
+            <section class="image" >
+              <span class="titleImage" style="background: <%= events[i].backgroundColor%>"><%= events[i].title%></span>
+            </section>
+          </div>
+          <div class="col-lg-5 sec-3">
+            <div class="title"><%= events[i].title%></div>
+            <div class="venue">
+              <table>
+                <tr>
+                  <td><i class="fa fa-map-marker"></i></td>
+                  <td>
+                    <div><%=events[i].location%></div>
+                    <div class="dim-color mapsContainer">
+                      <details>
+                        <summary class="button get">Get Directions</summary>
+                          
+                        <div>
+                          <div class="mapsData">
+                            <div class="mapCol">
+                          <span>from</span>
+                          <input placeholder="your location" id="from"> 
+                        </div>
+                        <div class="mapCol">
+                          <span>to</span>
+                          <input value="<%=events[i].location%>" class="to"> 
+                        </div>
+                        <div class="mapCol">
+                          <button class="get-directions" id="<%= events[i].title%>" data-location="<%=events[i].location%>">get route</button>
+                        </div>
+                          <div id="googleMap"></div>
+                          <div id="output"></div>
+                          <ul id="steps"></ul>
+                        </div>
+                        </div>
+                      </details>
+                     
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="time">
+              <table>
+                <tr>
+                  <td><i class="fa fa-clock-o"></i></td>
+                  <td>
+                    <div><%= events[i].time %></div>
+                    <div  class="dim-color">Created on <%= events[i].created%></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="sort-story">Hosted by <%=events[i].host%>. <%= events[i].description%></div>
+          </div>
+        </div>
+      </div>
+      <%}%>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="upcoming-sec">
+      <div class="heading">Past Events</div>
+    </div>
+    <div class="upcoming-event-list">
+      <% for(let i = 0; i < pastEvents.length; i ++){%>
+  
+      <div class="event-block past">
+        <div class="row">
+          <div class="col-lg-2 sec-1">
+            <table>
+              <tr>
+                <td>
+                  <div class="month"><%= pastEvents[i].month%></div>
+                  <div class="month-date-devider"></div>
+                  <div class="date"><%= pastEvents[i].date.split("-")[2]%></div>
+                </td>
+                
+                <td class="title"><%= pastEvents[i].title%></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-lg-5 sec-2">
+            <section class="image" >
+              <span class="titleImage" style="background: <%= events[i].backgroundColor%>"><%= pastEvents[i].title%></span>
+            </section>
+          </div>
+          <div class="col-lg-5 sec-3">
+            <div class="title"><%= pastEvents[i].title%></div>
+            <div class="venue">
+              <table>
+                <tr>
+                  <td><i class="fa fa-map-marker"></i></td>
+                  <td>
+                    <div><%=pastEvents[i].location%></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="time">
+              <table>
+               
+              </table>
+            </div>
+            <div class="sort-story">Hosted by <%=pastEvents[i].host%>. <%= pastEvents[i].description%>.</div>
+          </div>
+        </div>
+      </div>
+      <%}%>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.2/livestamp.min.js'></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT_xf9hcvB5gcBx7aE_Ab2CV_fpmWenRk&libraries=places"></script>
+<script src="directions.js"></script>
+</body>
+</html>

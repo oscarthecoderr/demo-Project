@@ -2,63 +2,43 @@
 <html>
 <head>
     <title>The Block Party</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="neighbors.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/neighbors/neighbors.css">
 </head>
 <body>
-  <header>
-    <h1 class="neighbors">About Your Neighbors</h1>
-    <nav class="navbar navbar-expand-sm" 
-    style="display:flex;
-    flex-direction: column;
-    ">
-      <a
-        href="/"
-        class="navbar-brand mb-0 h1">
-        Home
-      </a>
-        <button 
-        type="button" 
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        class="navbar-toggler"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        >
-        <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-        <div  
-            class="collapse navbar-collapse"
-            style="justify-content: space-around;";
-            id="navBarNav">
-            <ul class="navbar-nav">   
-              <li class="nav-item  active">
-                <a href="/neighbors" class="nav-link">About Your Neighbors</a>
-              </li>
-              <li class="nav-item  active">
-                <a href="/contact" class="nav-link">Contact Us</a>
-              </li>
-              <li class="nav-item  active">
-                <a href="/signup" class="nav-link">Sign Up</a>
-              </li>
-            </ul>
+      </div>
+  
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/neighbors">Meet Your Neighbors</a><span class="hover"></span></li>
+        <li><a href="/signup">Signup/login</a><span class="hover"></span></li>
+        <li><a href="/contact">Contact Us</a><span class="hover"></span></li>
+      </ul>
+    </div>
+    </div>
   </nav>
-        
-  </header>
-  <div class="container">
+  <div class="users-container">
     <div class="row">
       <% for(let i = 0 ; i < users.length ; i++){%>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="our-team">
-          <div class="picture">
-            <img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
+          <div class="picture" style="background: <%=users[i].color%>" >
+            <span class="img-fluid" ><%=users[i].local.email.split("")[0]%></span>
           </div>
           <div class="team-content">
             <h3 class="name"><%=users[i].local.email%></h3>
             <h4 class="title"><%=users[i].local.title%></h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           </div>
           <ul class="social">
             <details>
@@ -66,7 +46,7 @@
                 
               <div>
                 <h2>Welcome to the Block Party!</h2>
-                <p>In order to view <%=users[i].local.email%>'s upcoming events, <a href="/signup">signup</a>, or <a href="/login">login</a>.</p>
+                <p>In order to view <%=users[i].local.email%>'s upcoming events, <a href="/signup">signup</a>, or <a href="/signup">login</a>.</p>
               </div>
             </details>
           </ul>
@@ -76,30 +56,9 @@
     </div>
   </div>
 
-
-
-  <footer>
-    <section class="split contact">
-      <section class="alt">
-        <h3>Located At</h3>
-        <p>Boston M.A.<br />
-        </p>
-      </section>
-      <section>
-        <h3>Email</h3>
-        <a href="mailto:Dev.oscarios@gmail.com">Send Email</a>
-      </section>
-      <section>
-        <h3>Social</h3>
-        <ul class="icons alt">
-          <li><a href="https://twitter.com/Oscarthecoder" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="https://www.linkedin.com/in/oscar-rios-/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-          <li><a href="https://github.com/oscarthecoderr" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-        </ul>
-      </section>
-    </section>
-  </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="main.js"></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js'></script>
+<script src="/neighbors.js"></script>
 </body>
 </html>

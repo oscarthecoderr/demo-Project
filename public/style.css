@@ -20,15 +20,20 @@ h4{
 .row-1{
   border: 1px solid red;
 }
-body{
-  background-color: #000000;
-  background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
+
+.block{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.container{
+  width:40%;
+}
+#myCarousel{
+  width:50%;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-}
+
+
 

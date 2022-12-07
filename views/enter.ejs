@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Block Party</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Fuzzy+Bubbles:wght@700&family=Lacquer&family=Michroma&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+          
+          <style>
+            .carousel-item{
+              height:100vh;
+              min-height: 300px;
+              position: relative;
+            }
+
+            .container h1{
+              color:white;
+              -webkit-text-stroke-width: 3px;
+              -webkit-text-stroke-color: black;
+              font-size: 4rem;
+            }
+            .overlay-image{
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              top: 0;
+              background-position: center;
+              background-size:contain;
+              background-repeat: no-repeat;
+              filter: brightness(80%)
+            }
+           
+          </style>
+  <section class="block">
+          <div id="myCarousel" class="carousel slide carousel-fade" 
+            data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-bs-target="#myCarousel"
+                  data-bs-slide-to="0" class="active"></li>
+                  <li data-bs-target="#myCarousel"
+                  data-bs-slide-to="1"></li>
+                  <li data-bs-target="#myCarousel"
+                  data-bs-slide-to="2"></li>
+                  <li data-bs-target="#myCarousel"
+                  data-bs-slide-to="3"></li>
+                </ol>
+              <div class="carousel-inner">   
+                <div class="carousel-item active">
+                  <div class="overlay-image"
+                  style="background-image:url(/img/bethModel.jpg);">
+                  </div>
+
+                </div>      
+                <div class="carousel-item">
+                  <div class="overlay-image"
+                  style="background-image:url(/img/notebookP.jpg);">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="overlay-image"
+                  style="background-image:url(/img/james.jpg);">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="overlay-image"
+                  style="background-image:url(/img/nick.jpg);">
+                  </div>
+                </div>
+              </div> 
+          </div>
+          <div class="container">
+            <h1>WELCOME TO THE<br />
+              BLOCK PARTY!</h1>
+            <p>Best M.A Artists</p>
+            <a href="/neighbors" class="btn btn-lg btn-primary">
+            ENTER
+            </a>
+          </div>
+        </section>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="main.js"></script>
+
+</body>
+</html>

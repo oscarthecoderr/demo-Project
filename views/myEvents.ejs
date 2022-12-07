@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Events</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    />
+    <link rel="stylesheet" href="./myEvents.css" />
+  </head>
+  <body>
+    <nav>
+      <div><a href="/myEvents">My Events</a></div>
+      <div><a href="allEvents">All Events</a></div>
+      <div><a href="/settings">Account Settings</a></div>
+      <div><a href="/">Logout</a></div>
+    </nav>
+    <div class="mainContainer">
+      <div class="row">
+        <div class="col-md-12">
+          <form action="/createEvent" method="post">
+            <h1>Create An Event</h1>
+
+            <fieldset>
+              <legend><span class="number">1</span> Your Basic Info</legend>
+
+              <label for="name">Host:</label>
+              <input
+                type="text"
+                id="name"
+                name="host"
+                value="<%=user.email%>"
+              />
+
+              <label for="eventLocation">Event Location:</label>
+              <input type="text" id="eventLocation" name="location" />
+
+              <label>Type:</label>
+              <input
+                type="radio"
+                id="under_13"
+                value="all ages"
+                name="ages"
+              /><label for="under_13" class="light">All Ages</label><br />
+              <input
+                type="radio"
+                id="over_13"
+                value="over 21"
+                name="ages"
+              /><label for="over_13" class="light">Over 21</label>
+            </fieldset>
+            <fieldset>
+              <legend><span class="number">2</span>Event Profile</legend>
+
+              <label for="bio">Description:</label>
+              <textarea id="bio" name="description" required></textarea>
+              <input type="date" required name="date" />
+              <input
+                type="text"
+                required
+                name="eventTitle"
+                placeholder="Event Title"
+              />
+              <input type="time" placeholder="time" required name="time" />
+            </fieldset>
+
+            <button type="submit">Create Event</button>
+          </form>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <%for(let i = 0; i < events.length; i++){%>
+            <div class="media bg-danger align-items-stretch rounded my-5">
+              <div class="d-flex flex-column text-white p-3">
+                <div class="calendar-stack fa-5x d-flex">
+                  <i class="fa fa-calendar-o"></i>
+                  <span class="calendar-day"
+                    ><%= events[i].date.split('-')[2] %></span
+                  >
+                </div>
+                <span class="text-uppercase text-center"
+                  ><%= events[i].date %></span
+                >
+                <span class="delete" data-id="<%= events[i]._id%>">delete</span>
+              </div>
+              <div
+                class="media-body bg-white border rounded-right border-danger p-3"
+              >
+                <h2 class="text-uppercase font-weight-bold">
+                  <%= events[i].title %>
+                </h2>
+                <div
+                  class="d-flex flex-column flex-lg-row justify-content-start align-self-stretch mb-3"
+                >
+                  <h5 class="mb-3 mb-lg-0 mr-4">
+                    <strong class="text-uppercase">Time:</strong>
+                    <i class="fa fa-clock-o text-danger" aria-hidden="true"></i>
+                    <span class="text-nowrap"><%= events[i].time %></span>
+                  </h5>
+                  <h5 class="mb-3 mb-lg-0 mr-4">
+                    <strong class="text-uppercase">Location:</strong>
+                    <i
+                      class="fa fa-map-marker text-danger"
+                      aria-hidden="true"
+                    ></i>
+                    <span class="text-nowrap"><%= events[i].location %></span>
+                  </h5>
+                </div>
+                <p class="lead mb-0">
+                  <%= events[i].description %> Hosted by <%= events[i].host%>.
+                </p>
+              </div>
+            </div>
+            <%}%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- partial -->
+
+    <script>
+      let btns = document.querySelectorAll(".delete");
+      btns.forEach((btn) =>
+        addEventListener("click", (e) => {
+          let _id = e.target.dataset.id;
+          console.log(_id);
+          fetch("/deleteEvent", {
+            method: "delete",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              _id,
+            }),
+          })
+            .then((response) => {
+              if (response.ok) return response.json();
+            })
+            .then((data) => {
+              console.log(data);
+              window.location.reload(true);
+            });
+        })
+      );
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+  </body>
+</html>
